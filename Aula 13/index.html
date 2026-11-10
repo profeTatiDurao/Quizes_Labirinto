@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Roblox - Chegada no Castelo! 🏰</title>
+
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Fredoka One', cursive, sans-serif;
+            background-color: #87CEEB; /* Azul céu amigável */
+            background-image: radial-gradient(#ffffff 10%, transparent 10%), radial-gradient(#ffffff 10%, transparent 10%);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            color: #333333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            width: 700px;
+            margin: auto;
+            border-radius: 25px; /* Bordas bem redondinhas */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border: 5px solid #FFB6C1; /* Rosa clarinho */
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #FF4500; /* Laranja vibrante */
+            text-shadow: 2px 2px 0px #FFD700; /* Sombra amarela */
+            font-size: 2.5rem;
+        }
+
+        .subtitulo {
+            font-size: 1.1rem;
+            color: #555555;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .pergunta {
+            text-align: left;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 8px solid #32CD32; /* Verde limão */
+            background-color: #F0F8FF; /* Azul super claro */
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .pergunta p {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #1E90FF;
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            padding: 5px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        label:hover {
+            background-color: #FFE4E1; /* Fundo rosinha ao passar o mouse */
+        }
+
+        code {
+            color: #FF1493;
+            background-color: #FFF0F5;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #FF69B4; /* Rosa choque */
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.3rem;
+            font-family: inherit;
+            border: none;
+            border-radius: 50px; /* Botão em formato de pílula */
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 6px 0px #C71585; /* Efeito 3D */
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #FF1493;
+            transform: translateY(3px);
+            box-shadow: 0 3px 0px #C71585; /* Botão sendo "apertado" */
+        }
+
+        #resultado {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-top: 25px;
+            color: #FF4500;
+            background: #FFFACD;
+            padding: 15px;
+            border-radius: 15px;
+            display: none;
+        }
+
+        #linkRespostas {
+            margin-top: 15px;
+            word-break: break-all;
+            font-size: 0.9rem;
+        }
+
+        #linkRespostas a {
+            color: #1E90FF;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .correto {
+            color: #32CD32;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .errado {
+            color: #FF0000;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .neutro {
+            color: #FFA500;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>✨ Quiz da Chegada no Castelo! 🏰</h1>
+
+        <p class="subtitulo">
+            Mostre que você sabe tudo sobre os sons, partículas e portões mágicos do final do nosso labirinto! 🎶
+        </p>
+
+        <form id="quizForm">
+
+            <div class="pergunta" id="q1box">
+                <p>1) 🎵 O que o comando <code>Instance.new("Sound")</code> faz no nosso código?</p>
+                <label><input type="radio" name="q1" value="a"> Cria um novo som (uma música ou efeito especial) dentro do jogo.</label>
+                <label><input type="radio" name="q1" value="b"> Faz o personagem gritar de susto.</label>
+                <label><input type="radio" name="q1" value="c"> Cria uma partícula de brilho no topo do castelo.</label>
+                <label><input type="radio" name="q1" value="d"> Apaga todos os barulhos do mapa e deixa tudo no silêncio.</label>
+            </div>
+
+            <div class="pergunta" id="q2box">
+                <p>2) 🔁 O que acontece quando o código diz <code>som.Looped = false</code>?</p>
+                <label><input type="radio" name="q2" value="a"> O som vai tocar para sempre, sem parar nunca mais.</label>
+                <label><input type="radio" name="q2" value="b"> O som vai tocar de trás pra frente.</label>
+                <label><input type="radio" name="q2" value="c"> O som vai tocar apenas uma vez e depois vai parar.</label>
+                <label><input type="radio" name="q2" value="d"> O som fica mudo e ninguém escuta nada.</label>
+            </div>
+
+            <div class="pergunta" id="q3box">
+                <p>3) 👻 Quando o jogador chega no castelo, usamos o código <code>chegada2.CanCollide = false</code>. O que isso faz com a parede?</p>
+                <label><input type="radio" name="q3" value="a"> A parede ganha espinhos afiados.</label>
+                <label><input type="radio" name="q3" value="b"> A parede vira um fantasma e o jogador consegue atravessar ela direto para o castelo!</label>
+                <label><input type="radio" name="q3" value="c"> A parede empurra o jogador de volta para o começo do labirinto.</label>
+                <label><input type="radio" name="q3" value="d"> A parede explode e solta fogo.</label>
+            </div>
+
+            <div class="pergunta" id="q4box">
+                <p>4) 🔢 De onde vem aquele número estranho <code>"rbxassetid://12222253"</code> no nosso código?</p>
+                <label><input type="radio" name="q4" value="a"> É a senha secreta para virar dono do castelo.</label>
+                <label><input type="radio" name="q4" value="b"> É o ID (código) que pegamos na Caixa de Ferramentas (Toolbox) para escolher o som certinho que queremos tocar.</label>
+                <label><input type="radio" name="q4" value="c"> É a quantidade de vida que o chefão do jogo tem.</label>
+                <label><input type="radio" name="q4" value="d"> É a quantidade de moedas que o jogador vai ganhar.</label>
+            </div>
+
+            <div class="pergunta" id="q5box">
+                <p>5) ✨ O professor falou sobre colocar "partículas" (Particles) perto da chegada. O que são essas partículas no Roblox?</p>
+                <label><input type="radio" name="q5" value="a"> São paredes de tijolo bem pequenas para dificultar a passagem.</label>
+                <label><input type="radio" name="q5" value="b"> São efeitinhos visuais super legais, como brilhos, confetes ou fumaça colorida para comemorar a vitória!</label>
+                <label><input type="radio" name="q5" value="c"> São os monstros que protegem a porta do castelo.</label>
+                <label><input type="radio" name="q5" value="d"> É a chuva forte do clima do jogo.</label>
+            </div>
+
+            <button type="button" onclick="corrigir()">⭐ Ver Minha Pontuação! ⭐</button>
+
+        </form>
+
+        <p id="resultado"></p>
+        <p id="linkRespostas"></p>
+
+    </div>
+
+    <script>
+        function corrigir() {
+            // Gabarito do Quiz
+            const respostasCorretas = {
+                q1: "a",
+                q2: "c",
+                q3: "b",
+                q4: "b",
+                q5: "b"
+            };
+
+            let pontos = 0;
+            const total = Object.keys(respostasCorretas).length;
+            const form = document.getElementById("quizForm");
+
+            let params = [];
+
+            for (const q in respostasCorretas) {
+                const box = document.getElementById(q + "box");
+
+                // Remove feedback anterior, se houver
+                const antigo = box.querySelector(".feedback");
+                if (antigo) antigo.remove();
+
+                const marcado = form.querySelector(`input[name="${q}"]:checked`);
+                const respostaAluno = marcado ? marcado.value : "nao_respondeu";
+                const acertou = respostaAluno === respostasCorretas[q];
+
+                if (acertou) {
+                    pontos++;
+                }
+
+                params.push(`${q}=${respostaAluno}`);
+                params.push(`${q}_status=${acertou ? "correto" : "errado"}`);
+
+                const feedback = document.createElement("p");
+                feedback.classList.add("feedback");
+
+                if (respostaAluno === "nao_respondeu") {
+                    feedback.innerHTML = "🤔 <b>Ops! Você esqueceu de marcar essa.</b>";
+                    feedback.classList.add("neutro");
+                } else if (acertou) {
+                    feedback.innerHTML = "🎉 <b>Uhuul! Resposta Certa!</b>";
+                    feedback.classList.add("correto");
+                } else {
+                    let respostaCorretaTexto = "";
+                    const inputs = box.querySelectorAll("label input");
+
+                    inputs.forEach(input => {
+                        if (input.value === respostasCorretas[q]) {
+                            respostaCorretaTexto = input.parentNode.textContent.trim();
+                        }
+                    });
+
+                    feedback.innerHTML = `😢 <b>Poxa, você errou. A certa era:</b><br> 👉 ${respostaCorretaTexto}`;
+                    feedback.classList.add("errado");
+                }
+
+                box.appendChild(feedback);
+            }
+
+            const areaResultado = document.getElementById("resultado");
+            areaResultado.style.display = "block";
+            
+            if (pontos === total) {
+                areaResultado.innerHTML = `🏆 PARABÉNS! Você acertou TUDO (${pontos} de ${total})! Você é um Mestre do Roblox! 🏅`;
+            } else if (pontos >= 3) {
+                areaResultado.innerHTML = `👏 Muito bem! Você acertou ${pontos} de ${total}. Quase lá!`;
+            } else {
+                areaResultado.innerHTML = `😅 Você acertou só ${pontos} de ${total}. Vamos estudar mais um pouquinho os códigos!`;
+            }
+
+            params.push(`pontos=${pontos}`);
+            params.push(`total=${total}`);
+
+            const urlBase = window.location.origin + window.location.pathname;
+            const link = urlBase + "?" + params.join("&");
+
+            document.getElementById("linkRespostas").innerHTML =
+                `<br>🔗 <b>Link do seu resultado para mostrar pros amigos:</b><br><a href="${link}" target="_blank">${link}</a>`;
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Roblox - Caça ao Tesouro! 🪙</title>
+
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Fredoka One', cursive, sans-serif;
+            background-color: #FFFACD; /* Amarelo clarinho (LemonChiffon) */
+            background-image: radial-gradient(#FFD700 15%, transparent 15%), radial-gradient(#FFD700 15%, transparent 15%);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            color: #5C4033; /* Marrom escuro */
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            width: 750px;
+            margin: auto;
+            border-radius: 25px; 
+            box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
+            border: 6px solid #FFA500; /* Laranja vibrante */
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #FF8C00; /* Laranja escuro */
+            text-shadow: 2px 2px 0px #FFD700; /* Sombra dourada */
+            font-size: 2.6rem;
+        }
+
+        .subtitulo {
+            font-size: 1.1rem;
+            color: #8B4513; /* Marrom sela */
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .pergunta {
+            text-align: left;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 8px solid #FFD700; /* Borda Dourada */
+            background-color: #FFF8DC; /* Cor de pergaminho */
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .pergunta p {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #D2691E; /* Chocolate */
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            padding: 6px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        label:hover {
+            background-color: #FFE4B5; /* Pêssego ao passar o mouse */
+        }
+
+        code {
+            color: #B22222; /* Vermelho tijolo para destacar o código */
+            background-color: #FFEFD5;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #FFA500; /* Laranja */
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.3rem;
+            font-family: inherit;
+            border: none;
+            border-radius: 50px; 
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 6px 0px #FF4500; /* Efeito 3D laranja avermelhado */
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #FF8C00;
+            transform: translateY(3px);
+            box-shadow: 0 3px 0px #FF4500; 
+        }
+
+        #resultado {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-top: 25px;
+            color: #B8860B;
+            background: #FFFFE0;
+            padding: 15px;
+            border-radius: 15px;
+            display: none;
+            border: 3px dashed #FFD700;
+        }
+
+        #linkRespostas {
+            margin-top: 15px;
+            word-break: break-all;
+            font-size: 0.9rem;
+        }
+
+        #linkRespostas a {
+            color: #D2691E;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .correto {
+            color: #32CD32;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .errado {
+            color: #FF0000;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .neutro {
+            color: #FFA500;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>💰 Quiz da Caça ao Tesouro! 👑</h1>
+
+        <p class="subtitulo">
+            Teste seus conhecimentos sobre o placar de pontos (Leaderstats) e como coletar moedas mágicas no castelo! ✨
+        </p>
+
+        <form id="quizForm">
+
+            <div class="pergunta" id="q1box">
+                <p>1) 📜 Por que precisamos criar uma pasta com o nome exato de <code>leaderstats</code> no script do servidor?</p>
+                <label><input type="radio" name="q1" value="a"> É o nome de um monstro do jogo.</label>
+                <label><input type="radio" name="q1" value="b"> Porque "leaderstats" é uma palavra mágica do Roblox que faz o placar aparecer automaticamente no canto da tela!</label>
+                <label><input type="radio" name="q1" value="c"> Para esconder as moedas do jogador.</label>
+                <label><input type="radio" name="q1" value="d"> Só porque o programador achou o nome bonito.</label>
+            </div>
+
+            <div class="pergunta" id="q2box">
+                <p>2) 🚪 No código do servidor, temos o evento <code>game.Players.PlayerAdded:Connect</code>. Quando essa parte do código funciona?</p>
+                <label><input type="radio" name="q2" value="a"> Somente quando o jogador encosta numa porta.</label>
+                <label><input type="radio" name="q2" value="b"> Quando o jogador perde todas as vidas.</label>
+                <label><input type="radio" name="q2" value="c"> Exatamente no momento em que um novo jogador ENTRA no jogo, preparando o placar dele!</label>
+                <label><input type="radio" name="q2" value="d"> Quando o jogo é desligado.</label>
+            </div>
+
+            <div class="pergunta" id="q3box">
+                <p>3) 🎯 Lá no placar, criamos a variável e dizemos <code>pontos.Value = 0</code>. Por que começamos com o valor ZERO?</p>
+                <label><input type="radio" name="q3" value="a"> Porque 0 é o número da sorte.</label>
+                <label><input type="radio" name="q3" value="b"> Porque o jogador fez algo de errado.</label>
+                <label><input type="radio" name="q3" value="c"> Porque se colocar outro número o jogo trava.</label>
+                <label><input type="radio" name="q3" value="d"> Porque o jogador acabou de chegar no castelo e ainda não encontrou nenhuma moeda de ouro!</label>
+            </div>
+
+            <div class="pergunta" id="q4box">
+                <p>4) ➕ O que o código <code>player.leaderstats.Pontos.Value += 1</code> faz quando o nosso bonequinho encosta na moeda?</p>
+                <label><input type="radio" name="q4" value="a"> Ele rouba um ponto do jogador.</label>
+                <label><input type="radio" name="q4" value="b"> Ele adiciona +1 Ponto na conta do jogador lá no placar!</label>
+                <label><input type="radio" name="q4" value="c"> Ele multiplica os pontos por 100.</label>
+                <label><input type="radio" name="q4" value="d"> Ele divide as moedas com os amigos.</label>
+            </div>
+
+            <div class="pergunta" id="q5box">
+                <p>5) 💥 O que o comando <code>moeda:Destroy()</code> faz logo depois que pegamos o pontinho?</p>
+                <label><input type="radio" name="q5" value="a"> Destrói o castelo inteiro!</label>
+                <label><input type="radio" name="q5" value="b"> Faz o jogador explodir.</label>
+                <label><input type="radio" name="q5" value="c"> Apaga (destrói) a moeda do mapa, para o jogador não ficar em cima dela ganhando pontos infinitos sem esforço.</label>
+                <label><input type="radio" name="q5" value="d"> Cria uma nova moeda no mesmo lugar.</label>
+            </div>
+
+            <button type="button" onclick="corrigir()">💰 Abrir o Baú de Pontos! 💰</button>
+
+        </form>
+
+        <p id="resultado"></p>
+        <p id="linkRespostas"></p>
+
+    </div>
+
+    <script>
+        function corrigir() {
+            // Gabarito do Quiz
+            const respostasCorretas = {
+                q1: "b",
+                q2: "c",
+                q3: "d",
+                q4: "b",
+                q5: "c"
+            };
+
+            let pontos = 0;
+            const total = Object.keys(respostasCorretas).length;
+            const form = document.getElementById("quizForm");
+
+            let params = [];
+
+            for (const q in respostasCorretas) {
+                const box = document.getElementById(q + "box");
+
+                // Remove feedback anterior
+                const antigo = box.querySelector(".feedback");
+                if (antigo) antigo.remove();
+
+                const marcado = form.querySelector(`input[name="${q}"]:checked`);
+                const respostaAluno = marcado ? marcado.value : "nao_respondeu";
+                const acertou = respostaAluno === respostasCorretas[q];
+
+                if (acertou) {
+                    pontos++;
+                }
+
+                params.push(`${q}=${respostaAluno}`);
+                params.push(`${q}_status=${acertou ? "correto" : "errado"}`);
+
+                const feedback = document.createElement("p");
+                feedback.classList.add("feedback");
+
+                if (respostaAluno === "nao_respondeu") {
+                    feedback.innerHTML = "🤔 <b>Você não pegou essa moeda! Faltou responder.</b>";
+                    feedback.classList.add("neutro");
+                } else if (acertou) {
+                    feedback.innerHTML = "🎉 <b>Moeda coletada! Resposta certinha!</b>";
+                    feedback.classList.add("correto");
+                } else {
+                    let respostaCorretaTexto = "";
+                    const inputs = box.querySelectorAll("label input");
+
+                    inputs.forEach(input => {
+                        if (input.value === respostasCorretas[q]) {
+                            respostaCorretaTexto = input.parentNode.textContent.trim();
+                        }
+                    });
+
+                    feedback.innerHTML = `😢 <b>Tesouro perdido! A resposta certa era:</b><br> 👉 ${respostaCorretaTexto}`;
+                    feedback.classList.add("errado");
+                }
+
+                box.appendChild(feedback);
+            }
+
+            const areaResultado = document.getElementById("resultado");
+            areaResultado.style.display = "block";
+            
+            if (pontos === total) {
+                areaResultado.innerHTML = `🏆 REI DO TESOURO! Você acertou todas (${pontos} de ${total})! Seu placar está nas alturas! 👑🪙`;
+            } else if (pontos >= 3) {
+                areaResultado.innerHTML = `👏 Muito bem, Caçador! Você acertou ${pontos} de ${total}. Faltam poucas moedas para ser o rei! 💰`;
+            } else {
+                areaResultado.innerHTML = `😅 Você acertou ${pontos} de ${total}. Vamos ler o mapa do tesouro mais uma vez! 📜🗺️`;
+            }
+
+            params.push(`pontos=${pontos}`);
+            params.push(`total=${total}`);
+
+            const urlBase = window.location.origin + window.location.pathname;
+            const link = urlBase + "?" + params.join("&");
+
+            document.getElementById("linkRespostas").innerHTML =
+                `<br>🔗 <b>Link do seu Placar para mostrar pros amigos:</b><br><a href="${link}" target="_blank">${link}</a>`;
+        }
+    </script>
+
+</body>
+
+</html>

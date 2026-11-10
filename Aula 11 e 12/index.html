@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Roblox - Labirinto Divertido!</title>
+
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Fredoka One', cursive, sans-serif;
+            background-color: #87CEEB; /* Azul céu amigável */
+            background-image: radial-gradient(#ffffff 10%, transparent 10%), radial-gradient(#ffffff 10%, transparent 10%);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            color: #333333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            width: 700px;
+            margin: auto;
+            border-radius: 25px; /* Bordas bem redondinhas */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border: 5px solid #FFB6C1; /* Rosa clarinho */
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #FF4500; /* Laranja vibrante */
+            text-shadow: 2px 2px 0px #FFD700; /* Sombra amarela */
+            font-size: 2.5rem;
+        }
+
+        .subtitulo {
+            font-size: 1.1rem;
+            color: #555555;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .pergunta {
+            text-align: left;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 8px solid #32CD32; /* Verde limão */
+            background-color: #F0F8FF; /* Azul super claro */
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .pergunta p {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #1E90FF;
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            padding: 5px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        label:hover {
+            background-color: #FFE4E1; /* Fundo rosinha ao passar o mouse */
+        }
+
+        code {
+            color: #FF1493;
+            background-color: #FFF0F5;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #FF69B4; /* Rosa choque */
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.3rem;
+            font-family: inherit;
+            border: none;
+            border-radius: 50px; /* Botão em formato de pílula */
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 6px 0px #C71585; /* Efeito 3D */
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #FF1493;
+            transform: translateY(3px);
+            box-shadow: 0 3px 0px #C71585; /* Botão sendo "apertado" */
+        }
+
+        #resultado {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-top: 25px;
+            color: #FF4500;
+            background: #FFFACD;
+            padding: 15px;
+            border-radius: 15px;
+            display: none;
+        }
+
+        #linkRespostas {
+            margin-top: 15px;
+            word-break: break-all;
+            font-size: 0.9rem;
+        }
+
+        #linkRespostas a {
+            color: #1E90FF;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .correto {
+            color: #32CD32;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .errado {
+            color: #FF0000;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .neutro {
+            color: #FFA500;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🎮 Quiz do Labirinto Roblox! 🏰</h1>
+
+        <p class="subtitulo">
+            Teste seus conhecimentos sobre os códigos de Chão de Lava, Pulo e Super Velocidade que usamos no nosso jogo! 🚀
+        </p>
+
+        <form id="quizForm">
+
+            <div class="pergunta" id="q1box">
+                <p>1) 🌋 O que o comando <code>Touched</code> faz no nosso jogo?</p>
+                <label><input type="radio" name="q1" value="a"> Muda a cor do chão de lava do labirinto.</label>
+                <label><input type="radio" name="q1" value="b"> Descobre exatamente quando o jogador encosta na peça.</label>
+                <label><input type="radio" name="q1" value="c"> Faz o jogador pular bem alto sem querer.</label>
+                <label><input type="radio" name="q1" value="d"> Cria uma nova árvore no mapa.</label>
+            </div>
+
+            <div class="pergunta" id="q2box">
+                <p>2) ☠️ Na parte da lava, o que o comando <code>BreakJoints()</code> faz com o jogador?</p>
+                <label><input type="radio" name="q2" value="a"> Dá mais vida para ele continuar no labirinto.</label>
+                <label><input type="radio" name="q2" value="b"> Faz o personagem dançar de alegria.</label>
+                <label><input type="radio" name="q2" value="c"> Quebra as "juntas" do personagem, fazendo ele ser eliminado (morrer).</label>
+                <label><input type="radio" name="q2" value="d"> Deixa ele invencível contra qualquer obstáculo.</label>
+            </div>
+
+            <div class="pergunta" id="q3box">
+                <p>3) 🕵️‍♂️ Por que usamos o código <code>FindFirstChildOfClass("Humanoid")</code>?</p>
+                <label><input type="radio" name="q3" value="a"> Para ter certeza de que quem encostou foi um jogador/personagem e não uma parede.</label>
+                <label><input type="radio" name="q3" value="b"> Para procurar um tesouro escondido no castelo.</label>
+                <label><input type="radio" name="q3" value="c"> Para mudar o clima do jogo para chuvoso.</label>
+                <label><input type="radio" name="q3" value="d"> Para tocar uma musiquinha legal.</label>
+            </div>
+
+            <div class="pergunta" id="q4box">
+                <p>4) 🚀 No código de aceleração, o que acontece com a velocidade (<code>WalkSpeed</code>) e o pulo (<code>JumpPower</code>)?</p>
+                <label><input type="radio" name="q4" value="a"> A velocidade cai para zero e o jogador fica preso.</label>
+                <label><input type="radio" name="q4" value="b"> A velocidade vai para 32 e o pulo para 100, deixando ele super rápido e saltitante!</label>
+                <label><input type="radio" name="q4" value="c"> Ele começa a voar pelo mapa sem parar.</label>
+                <label><input type="radio" name="q4" value="d"> Nada muda, ele continua andando devagarzinho.</label>
+            </div>
+
+            <div class="pergunta" id="q5box">
+                <p>5) ⏱️ Por quanto tempo o jogador fica com os super poderes de pulo e velocidade?</p>
+                <label><input type="radio" name="q5" value="a"> Para sempre, até o jogo acabar.</label>
+                <label><input type="radio" name="q5" value="b"> Por 1 minuto inteirinho.</label>
+                <label><input type="radio" name="q5" value="c"> Apenas meio segundo.</label>
+                <label><input type="radio" name="q5" value="d"> Por 3 segundos, por causa do comando <code>task.wait(3)</code>.</label>
+            </div>
+
+            <div class="pergunta" id="q6box">
+                <p>6) 🐢 O que acontece quando os 3 segundos de super velocidade acabam?</p>
+                <label><input type="radio" name="q6" value="a"> O jogador volta ao normal: o pulo volta para 50 e a velocidade para 16.</label>
+                <label><input type="radio" name="q6" value="b"> O jogador desmaia e perde o jogo.</label>
+                <label><input type="radio" name="q6" value="c"> Ele ganha ainda mais velocidade e pula o castelo inteiro.</label>
+                <label><input type="radio" name="q6" value="d"> Ele é teletransportado para o início do labirinto.</label>
+            </div>
+
+            <button type="button" onclick="corrigir()">⭐ Ver Minha Pontuação! ⭐</button>
+
+        </form>
+
+        <p id="resultado"></p>
+        <p id="linkRespostas"></p>
+
+    </div>
+
+    <script>
+        function corrigir() {
+            // Gabarito do Quiz
+            const respostasCorretas = {
+                q1: "b",
+                q2: "c",
+                q3: "a",
+                q4: "b",
+                q5: "d",
+                q6: "a"
+            };
+
+            let pontos = 0;
+            const total = Object.keys(respostasCorretas).length;
+            const form = document.getElementById("quizForm");
+
+            let params = [];
+
+            for (const q in respostasCorretas) {
+                const box = document.getElementById(q + "box");
+
+                // Remove feedback anterior, se houver
+                const antigo = box.querySelector(".feedback");
+                if (antigo) antigo.remove();
+
+                const marcado = form.querySelector(`input[name="${q}"]:checked`);
+                const respostaAluno = marcado ? marcado.value : "nao_respondeu";
+                const acertou = respostaAluno === respostasCorretas[q];
+
+                if (acertou) {
+                    pontos++;
+                }
+
+                params.push(`${q}=${respostaAluno}`);
+                params.push(`${q}_status=${acertou ? "correto" : "errado"}`);
+
+                const feedback = document.createElement("p");
+                feedback.classList.add("feedback");
+
+                if (respostaAluno === "nao_respondeu") {
+                    feedback.innerHTML = "🤔 <b>Ops! Você esqueceu de marcar essa.</b>";
+                    feedback.classList.add("neutro");
+                } else if (acertou) {
+                    feedback.innerHTML = "🎉 <b>Uhuul! Resposta Certa!</b>";
+                    feedback.classList.add("correto");
+                } else {
+                    let respostaCorretaTexto = "";
+                    const inputs = box.querySelectorAll("label input");
+
+                    inputs.forEach(input => {
+                        if (input.value === respostasCorretas[q]) {
+                            respostaCorretaTexto = input.parentNode.textContent.trim();
+                        }
+                    });
+
+                    feedback.innerHTML = `😢 <b>Poxa, você errou. A certa era:</b><br> 👉 ${respostaCorretaTexto}`;
+                    feedback.classList.add("errado");
+                }
+
+                box.appendChild(feedback);
+            }
+
+            const areaResultado = document.getElementById("resultado");
+            areaResultado.style.display = "block";
+            
+            if (pontos === total) {
+                areaResultado.innerHTML = `🏆 PARABÉNS! Você acertou TUDO (${pontos} de ${total})! Você é um Mestre do Roblox! 🏅`;
+            } else if (pontos >= 3) {
+                areaResultado.innerHTML = `👏 Muito bem! Você acertou ${pontos} de ${total}. Quase lá!`;
+            } else {
+                areaResultado.innerHTML = `😅 Você acertou só ${pontos} de ${total}. Vamos estudar mais um pouquinho os códigos!`;
+            }
+
+            params.push(`pontos=${pontos}`);
+            params.push(`total=${total}`);
+
+            const urlBase = window.location.origin + window.location.pathname;
+            const link = urlBase + "?" + params.join("&");
+
+            document.getElementById("linkRespostas").innerHTML =
+                `<br>🔗 <b>Link do seu resultado para mostrar pros amigos:</b><br><a href="${link}" target="_blank">${link}</a>`;
+        }
+    </script>
+
+</body>
+
+</html>

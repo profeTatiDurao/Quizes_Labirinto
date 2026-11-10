@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Central de quizes do Roblox Labirinto.">
+  <title>Quizes Roblox Labirinto</title>
+  <style>
+    :root {
+      --ink: #202044;
+      --muted: #66658a;
+      --purple: #7047d9;
+      --purple-dark: #4a2a9d;
+      --yellow: #ffd65a;
+      --pink: #ff7eb6;
+      --card: #ffffff;
+      --shadow: 0 12px 28px rgba(61, 37, 130, .16);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(255,255,255,.7) 0 5%, transparent 5.5%),
+        radial-gradient(circle at 88% 15%, rgba(255,255,255,.55) 0 4%, transparent 4.5%),
+        linear-gradient(145deg, #b8eff0 0%, #d9d0ff 52%, #ffe1f1 100%);
+    }
+
+    .page {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 38px 0 48px;
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      padding: 42px 34px 36px;
+      text-align: center;
+      border: 4px solid #fff;
+      border-radius: 30px;
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+      box-shadow: var(--shadow);
+    }
+
+    header::before,
+    header::after {
+      content: "";
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      border: 10px solid rgba(255,255,255,.16);
+      transform: rotate(45deg);
+    }
+
+    header::before { left: -64px; bottom: -70px; }
+    header::after { right: -64px; top: -70px; }
+
+    .eyebrow {
+      position: relative;
+      margin: 0 0 10px;
+      color: var(--yellow);
+      font-size: .95rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      position: relative;
+      margin: 0;
+      color: #fff;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.05;
+      text-shadow: 3px 4px 0 rgba(34, 18, 93, .3);
+    }
+
+    .intro {
+      position: relative;
+      max-width: 620px;
+      margin: 16px auto 0;
+      color: #f3efff;
+      font-size: 1.08rem;
+      line-height: 1.5;
+    }
+
+    .section-title {
+      margin: 34px 0 16px;
+      text-align: center;
+      font-size: 1.55rem;
+    }
+
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .quiz-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 220px;
+      padding: 22px;
+      border: 3px solid rgba(255,255,255,.9);
+      border-radius: 22px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .quiz-card:hover {
+      transform: translateY(-5px) rotate(-.5deg);
+      box-shadow: 0 17px 30px rgba(61, 37, 130, .22);
+    }
+
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      margin-bottom: 14px;
+      border-radius: 16px;
+      background: #eee8ff;
+      font-size: 1.8rem;
+    }
+
+    .task {
+      margin: 0;
+      color: var(--purple);
+      font-size: .85rem;
+      font-weight: 800;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 7px 0 9px;
+      font-size: 1.25rem;
+    }
+
+    .description {
+      flex: 1;
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 15px;
+      border-radius: 12px;
+      color: #fff;
+      background: var(--purple);
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .button:hover, .button:focus-visible {
+      background: var(--purple-dark);
+      transform: scale(1.04);
+    }
+
+    .button.secondary { background: #f28aaf; }
+    .button.secondary:hover, .button.secondary:focus-visible { background: #d95b8b; }
+
+    footer {
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: .95rem;
+      text-align: center;
+    }
+
+    @media (max-width: 520px) {
+      .page { width: min(100% - 20px, 1100px); padding-top: 20px; }
+      header { padding: 32px 20px 28px; border-radius: 24px; }
+      .quiz-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p class="eyebrow">Roblox Studio • Aprender brincando</p>
+      <h1>🎮 Quizes do Roblox Labirinto 🏰</h1>
+      <p class="intro">Escolha uma tarefa, entre no labirinto e mostre tudo o que você aprendeu!</p>
+    </header>
+
+    <h2 class="section-title">Escolha seu quiz</h2>
+
+    <section class="quiz-grid" aria-label="Lista de quizes">
+      <article class="quiz-card">
+        <div class="icon">🧱</div>
+        <p class="task">Tarefa 10</p>
+        <h2>Criador do Roblox Studio</h2>
+        <p class="description">Vamos começar construindo o nosso mundo!</p>
+        <div class="buttons"><a class="button" href="Aula%2010/index.html">Jogar quiz</a></div>
+      </article>
+
+      <article class="quiz-card">
+        <div class="icon">🏰</div>
+        <p class="task">Tarefas 11 e 12</p>
+        <h2>Labirinto Roblox</h2>
+        <p class="description">Este quiz vale para as tarefas 11 e 12.</p>
+        <div class="buttons">
+          <a class="button" href="Aula%2011%20e%2012/index.html">Tarefa 11</a>
+          <a class="button secondary" href="Aula%2011%20e%2012/index.html">Tarefa 12</a>
+        </div>
+      </article>
+
+      <article class="quiz-card"><div class="icon">✨</div><p class="task">Tarefa 13</p><h2>Chegada no Castelo</h2><p class="description">Prepare-se para chegar ao castelo!</p><div class="buttons"><a class="button" href="Aula%2013/index.html">Jogar quiz</a></div></article>
+      <article class="quiz-card"><div class="icon">🗝️</div><p class="task">Tarefa 14</p><h2>Portas e Chaves</h2><p class="description">Encontre as chaves e abra as portas mágicas.</p><div class="buttons"><a class="button" href="Aula%2014/gemini-code-1794319076012.html">Jogar quiz</a></div></article>
+      <article class="quiz-card"><div class="icon">💰</div><p class="task">Tarefa 15</p><h2>Caça ao Tesouro</h2><p class="description">A aventura pelo tesouro está esperando por você.</p><div class="buttons"><a class="button" href="Aula%2015/index.html">Jogar quiz</a></div></article>
+      <article class="quiz-card"><div class="icon">🛡️</div><p class="task">Tarefa 16</p><h2>Heróis da Segurança</h2><p class="description">Aprenda a jogar com segurança e responsabilidade.</p><div class="buttons"><a class="button" href="Aula%2016/index.html">Jogar quiz</a></div></article>
+      <article class="quiz-card"><div class="icon">🪜</div><p class="task">Tarefa 17</p><h2>Escadas Mágicas</h2><p class="description">Suba cada degrau e continue sua missão.</p><div class="buttons"><a class="button" href="Aula%2017/index.html">Jogar quiz</a></div></article>
+      <article class="quiz-card"><div class="icon">🌀</div><p class="task">Tarefa 18</p><h2>Portais e Teletransporte</h2><p class="description">Descubra para onde cada portal pode levar.</p><div class="buttons"><a class="button" href="Aula%2018/index.html">Jogar quiz</a></div></article>
+      <article class="quiz-card"><div class="icon">🌳</div><p class="task">Tarefa 19</p><h2>Plugin do Labirinto</h2><p class="description">Use seus conhecimentos para dominar o plugin.</p><div class="buttons"><a class="button" href="Aula%2019/index.html">Jogar quiz</a></div></article>
+      <article class="quiz-card"><div class="icon">👾</div><p class="task">Tarefa 20</p><h2>O Monstro Perseguidor</h2><p class="description">Corra, pense rápido e escape do labirinto!</p><div class="buttons"><a class="button" href="Aula%2020/index.html">Jogar quiz</a></div></article>
+    </section>
+
+    <footer>🌟 Boa aventura! Clique em uma tarefa para começar. 🌟</footer>
+  </main>
+</body>
+</html>

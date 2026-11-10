@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Roblox - Portas Mágicas e Chaves! 🗝️</title>
+
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Fredoka One', cursive, sans-serif;
+            background-color: #E6E6FA; /* Lilás mágico (Lavender) */
+            background-image: radial-gradient(#ffffff 15%, transparent 15%), radial-gradient(#ffffff 15%, transparent 15%);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            color: #333333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            width: 750px;
+            margin: auto;
+            border-radius: 25px; 
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.2);
+            border: 6px solid #9370DB; /* Roxo médio */
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #8A2BE2; /* Azul violeta */
+            text-shadow: 2px 2px 0px #FFD700; /* Sombra dourada */
+            font-size: 2.4rem;
+        }
+
+        .subtitulo {
+            font-size: 1.1rem;
+            color: #555555;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .pergunta {
+            text-align: left;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 8px solid #FFD700; /* Borda dourada */
+            background-color: #F8F8FF; /* Branco fantasma */
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .pergunta p {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #9370DB;
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            padding: 6px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        label:hover {
+            background-color: #E6E6FA; /* Lilás clarinho ao passar o mouse */
+        }
+
+        code {
+            color: #FF8C00; /* Laranja escuro para destacar o código */
+            background-color: #FFF8DC;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #8A2BE2; /* Roxo vibrante */
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.3rem;
+            font-family: inherit;
+            border: none;
+            border-radius: 50px; 
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 6px 0px #4B0082; /* Efeito 3D roxo escuro */
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #9932CC;
+            transform: translateY(3px);
+            box-shadow: 0 3px 0px #4B0082; 
+        }
+
+        #resultado {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-top: 25px;
+            color: #4B0082;
+            background: #FFFACD;
+            padding: 15px;
+            border-radius: 15px;
+            display: none;
+        }
+
+        #linkRespostas {
+            margin-top: 15px;
+            word-break: break-all;
+            font-size: 0.9rem;
+        }
+
+        #linkRespostas a {
+            color: #8A2BE2;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .correto {
+            color: #32CD32;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .errado {
+            color: #FF4500;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .neutro {
+            color: #FFA500;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🚪 Quiz das Portas e Chaves! 🗝️</h1>
+
+        <p class="subtitulo">
+            Prepare-se para abrir os portões do castelo! Mostre que você é mestre em ClickDetectors e Atributos! ✨
+        </p>
+
+        <form id="quizForm">
+
+            <div class="pergunta" id="q1box">
+                <p>1) 🖱️ O que nós precisamos colocar dentro da porta para que ela perceba quando clicamos nela com o mouse?</p>
+                <label><input type="radio" name="q1" value="a"> Um teclado gigante.</label>
+                <label><input type="radio" name="q1" value="b"> O comando de pular (JumpPower).</label>
+                <label><input type="radio" name="q1" value="c"> Um <code>ClickDetector</code> (Detector de Clique).</label>
+                <label><input type="radio" name="q1" value="d"> Uma poção mágica.</label>
+            </div>
+
+            <div class="pergunta" id="q2box">
+                <p>2) 👻 Quando o script diz <code>porta.Transparency = 1</code>, o que acontece com a porta?</p>
+                <label><input type="radio" name="q2" value="a"> Ela é pintada de roxo escuro.</label>
+                <label><input type="radio" name="q2" value="b"> Ela fica totalmente transparente (invisível), como se fosse ar ou vidro super limpo!</label>
+                <label><input type="radio" name="q2" value="c"> Ela começa a piscar luzes coloridas.</label>
+                <label><input type="radio" name="q2" value="d"> Ela vira um fantasma assustador.</label>
+            </div>
+
+            <div class="pergunta" id="q3box">
+                <p>3) 🚶‍♂️ Por que usamos o comando <code>porta.CanCollide = false</code> na hora de abrir a porta?</p>
+                <label><input type="radio" name="q3" value="a"> Para o boneco conseguir atravessar a porta sem bater a cara nela!</label>
+                <label><input type="radio" name="q3" value="b"> Para a porta ficar super pesada e ninguém empurrar.</label>
+                <label><input type="radio" name="q3" value="c"> Para a porta causar dano no jogador.</label>
+                <label><input type="radio" name="q3" value="d"> Para a porta se esconder debaixo da terra.</label>
+            </div>
+
+            <div class="pergunta" id="q4box">
+                <p>4) 🏷️ Como o jogo "lembra" que o jogador encostou na chave e agora pode abrir a porta secreta?</p>
+                <label><input type="radio" name="q4" value="a"> O dono do jogo anota num caderninho.</label>
+                <label><input type="radio" name="q4" value="b"> O script usa o <code>SetAttribute</code> para colar uma "etiqueta" invisível no jogador dizendo que <code>"TemChave" = true</code>.</label>
+                <label><input type="radio" name="q4" value="c"> A chave fica flutuando gigantesca em cima da cabeça dele.</label>
+                <label><input type="radio" name="q4" value="d"> O nome do jogador muda para "Chaveiro".</label>
+            </div>
+
+            <div class="pergunta" id="q5box">
+                <p>5) 🕵️‍♀️ Quando o jogador tenta passar pela porta de chaves, como a porta checa se ele realmente pegou a chave?</p>
+                <label><input type="radio" name="q5" value="a"> Ela lê a etiqueta do jogador usando o comando <code>GetAttribute("TemChave") == true</code>.</label>
+                <label><input type="radio" name="q5" value="b"> A porta tem olhos mágicos e procura a chave na mochila dele.</label>
+                <label><input type="radio" name="q5" value="c"> O jogador precisa digitar uma senha secreta no chat.</label>
+                <label><input type="radio" name="q5" value="d"> A porta só abre se o jogador der 3 pulinhos.</label>
+            </div>
+
+            <div class="pergunta" id="q6box">
+                <p>6) ⏳ No script da chave, depois que a chave some, temos um <code>wait(2)</code> e depois os códigos <code>Transparency = 0</code> e <code>CanTouch = true</code>. O que isso faz?</p>
+                <label><input type="radio" name="q6" value="a"> Faz o jogo desligar depois de 2 segundos.</label>
+                <label><input type="radio" name="q6" value="b"> Faz o jogador perder a chave e chorar.</label>
+                <label><input type="radio" name="q6" value="c"> Faz a chave reaparecer depois de 2 segundos para que outros amiguinhos também possam pegá-la!</label>
+                <label><input type="radio" name="q6" value="d"> Faz chover chaves no mapa todo.</label>
+            </div>
+
+            <div class="pergunta" id="q7box">
+                <p>7) 👆 Qual é a parte do código que "ouve" e avisa o jogo: "Ei, alguém clicou aqui com o mouse!"?</p>
+                <label><input type="radio" name="q7" value="a"> <code>porta.Touched:Connect</code></label>
+                <label><input type="radio" name="q7" value="b"> <code>detector.MouseClick:Connect(function(player)</code></label>
+                <label><input type="radio" name="q7" value="c"> <code>wait(3)</code></label>
+                <label><input type="radio" name="q7" value="d"> <code>game.Players:GetPlayerFromCharacter</code></label>
+            </div>
+
+            <button type="button" onclick="corrigir()">🔮 Abrir o Baú de Pontos! 🔮</button>
+
+        </form>
+
+        <p id="resultado"></p>
+        <p id="linkRespostas"></p>
+
+    </div>
+
+    <script>
+        function corrigir() {
+            // Gabarito do Quiz
+            const respostasCorretas = {
+                q1: "c",
+                q2: "b",
+                q3: "a",
+                q4: "b",
+                q5: "a",
+                q6: "c",
+                q7: "b"
+            };
+
+            let pontos = 0;
+            const total = Object.keys(respostasCorretas).length;
+            const form = document.getElementById("quizForm");
+
+            let params = [];
+
+            for (const q in respostasCorretas) {
+                const box = document.getElementById(q + "box");
+
+                // Remove feedback anterior
+                const antigo = box.querySelector(".feedback");
+                if (antigo) antigo.remove();
+
+                const marcado = form.querySelector(`input[name="${q}"]:checked`);
+                const respostaAluno = marcado ? marcado.value : "nao_respondeu";
+                const acertou = respostaAluno === respostasCorretas[q];
+
+                if (acertou) {
+                    pontos++;
+                }
+
+                params.push(`${q}=${respostaAluno}`);
+                params.push(`${q}_status=${acertou ? "correto" : "errado"}`);
+
+                const feedback = document.createElement("p");
+                feedback.classList.add("feedback");
+
+                if (respostaAluno === "nao_respondeu") {
+                    feedback.innerHTML = "🤔 <b>Você esqueceu essa! A porta continuou fechada...</b>";
+                    feedback.classList.add("neutro");
+                } else if (acertou) {
+                    feedback.innerHTML = "🎉 <b>Certinho! Mágica realizada!</b>";
+                    feedback.classList.add("correto");
+                } else {
+                    let respostaCorretaTexto = "";
+                    const inputs = box.querySelectorAll("label input");
+
+                    inputs.forEach(input => {
+                        if (input.value === respostasCorretas[q]) {
+                            respostaCorretaTexto = input.parentNode.textContent.trim();
+                        }
+                    });
+
+                    feedback.innerHTML = `😢 <b>Ops, magia falhou! A resposta certa era:</b><br> 👉 ${respostaCorretaTexto}`;
+                    feedback.classList.add("errado");
+                }
+
+                box.appendChild(feedback);
+            }
+
+            const areaResultado = document.getElementById("resultado");
+            areaResultado.style.display = "block";
+            
+            if (pontos === total) {
+                areaResultado.innerHTML = `🏆 SENSACIONAL! Você acertou todas (${pontos} de ${total})! O Castelo é todo seu! 🏰✨`;
+            } else if (pontos >= 4) {
+                areaResultado.innerHTML = `👏 Muito bem! Você acertou ${pontos} de ${total}. Já pode ser o guardião das chaves! 🗝️`;
+            } else {
+                areaResultado.innerHTML = `😅 Você acertou ${pontos} de ${total}. As portas mágicas são complicadas, vamos tentar de novo! 🧙‍♂️`;
+            }
+
+            params.push(`pontos=${pontos}`);
+            params.push(`total=${total}`);
+
+            const urlBase = window.location.origin + window.location.pathname;
+            const link = urlBase + "?" + params.join("&");
+
+            document.getElementById("linkRespostas").innerHTML =
+                `<br>🔗 <b>Link Mágico com seu resultado:</b><br><a href="${link}" target="_blank">${link}</a>`;
+        }
+    </script>
+
+</body>
+
+</html>

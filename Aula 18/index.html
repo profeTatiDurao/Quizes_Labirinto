@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Roblox - Portais e Teletransporte! 🌀</title>
+
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Fredoka One', cursive, sans-serif;
+            background-color: #191970; /* Azul Meia-Noite */
+            background-image: radial-gradient(#E6E6FA 10%, transparent 10%), radial-gradient(#E6E6FA 10%, transparent 10%);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            color: #333333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            width: 750px;
+            margin: auto;
+            border-radius: 25px; 
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
+            border: 6px solid #00CED1; /* Turquesa Escuro (Portal) */
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #8A2BE2; /* Azul Violeta */
+            text-shadow: 2px 2px 0px #00FFFF; /* Sombra Ciano Neon */
+            font-size: 2.6rem;
+        }
+
+        .subtitulo {
+            font-size: 1.1rem;
+            color: #4B0082; /* Índigo */
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .pergunta {
+            text-align: left;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 8px solid #9400D3; /* Violeta Escuro */
+            background-color: #F3E5F5; /* Lilás bem clarinho */
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .pergunta p {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #8B008B; /* Magenta Escuro */
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            padding: 6px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        label:hover {
+            background-color: #E0FFFF; /* Ciano clarinho ao passar o mouse */
+        }
+
+        code {
+            color: #0000CD; /* Azul médio para destacar o código */
+            background-color: #E6E6FA;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #9400D3; /* Violeta Vibrante */
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.3rem;
+            font-family: inherit;
+            border: none;
+            border-radius: 50px; 
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 6px 0px #4B0082; /* Efeito 3D Escuro */
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #8A2BE2;
+            transform: translateY(3px);
+            box-shadow: 0 3px 0px #4B0082; 
+        }
+
+        #resultado {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-top: 25px;
+            color: #008B8B;
+            background: #E0FFFF;
+            padding: 15px;
+            border-radius: 15px;
+            display: none;
+            border: 3px dashed #00CED1;
+        }
+
+        #linkRespostas {
+            margin-top: 15px;
+            word-break: break-all;
+            font-size: 0.9rem;
+        }
+
+        #linkRespostas a {
+            color: #9400D3;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .correto {
+            color: #32CD32;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .errado {
+            color: #FF1493; /* Rosa Choque */
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .neutro {
+            color: #FFA500;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🚀 Quiz do Teletransporte! 🌀</h1>
+
+        <p class="subtitulo">
+            Teste se você sabe programar portais secretos e letreiros voadores para levar os jogadores a um novo labirinto! ✨
+        </p>
+
+        <form id="quizForm">
+
+            <div class="pergunta" id="q1box">
+                <p>1) 🪧 Antes do jogador entrar no portal, usamos uma <code>BillboardGui</code> com fundo preto e tamanho 25. O que ela faz?</p>
+                <label><input type="radio" name="q1" value="a"> Faz a tela do jogador ficar totalmente preta e travar o jogo.</label>
+                <label><input type="radio" name="q1" value="b"> Cria um "letreiro" ou "plaquinha" flutuante muito legal, avisando que o jogador precisa ter as moedas antes de passar!</label>
+                <label><input type="radio" name="q1" value="c"> Transforma o boneco do jogador num bloco gigante.</label>
+                <label><input type="radio" name="q1" value="d"> É um botão secreto que explode o mapa.</label>
+            </div>
+
+            <div class="pergunta" id="q2box">
+                <p>2) ⏳ No script do teletransporte, escrevemos <code>WaitForChild('basetp')</code>. Por que usamos esse "Wait" (Esperar)?</p>
+                <label><input type="radio" name="q2" value="a"> Para o jogo esperar carregar a peça de destino ('basetp') com segurança, para saber exatamente para onde enviar o jogador.</label>
+                <label><input type="radio" name="q2" value="b"> Para deixar o jogador preso no portal esperando para sempre.</label>
+                <label><input type="radio" name="q2" value="c"> Para esperar a chuva passar dentro do jogo.</label>
+                <label><input type="radio" name="q2" value="d"> Porque o computador é lento e precisa de um descanso.</label>
+            </div>
+
+            <div class="pergunta" id="q3box">
+                <p>3) 🤖 O código procura pelo <code>HumanoidRootPart</code> do personagem. O que é essa parte no Roblox?</p>
+                <label><input type="radio" name="q3" value="a"> É o chapéu chique do personagem.</label>
+                <label><input type="radio" name="q3" value="b"> É a "raiz" (o meio invisível) do boneco! Usamos ela para ter certeza de que estamos movendo o jogador inteiro e não só um braço dele.</label>
+                <label><input type="radio" name="q3" value="c"> É o pet (bichinho) que segue o jogador.</label>
+                <label><input type="radio" name="q3" value="d"> É a varinha mágica que atira raios.</label>
+            </div>
+
+            <div class="pergunta" id="q4box">
+                <p>4) ✨ Qual é a verdadeira "mágica" do nosso código que faz o bonequinho viajar de um lugar para o outro em um piscar de olhos?</p>
+                <label><input type="radio" name="q4" value="a"> <code>local partatual=script.Parent</code></label>
+                <label><input type="radio" name="q4" value="b"> <code>partatual.Touched:Connect</code></label>
+                <label><input type="radio" name="q4" value="c"> <code>personagem:MoveTo(base.Position)</code></label>
+                <label><input type="radio" name="q4" value="d"> <code>local personagem=hit.Parent</code></label>
+            </div>
+
+            <div class="pergunta" id="q5box">
+                <p>5) 🗺️ Onde nós podemos esconder ou colocar a nossa <code>basetp</code> (a base para onde o jogador é teletransportado)?</p>
+                <label><input type="radio" name="q5" value="a"> Somente no ponto inicial do jogo (Spawn).</label>
+                <label><input type="radio" name="q5" value="b"> Em qualquer lugar que quisermos! Pode ser no começo do labirinto secreto, numa ilha voadora ou no topo do castelo!</label>
+                <label><input type="radio" name="q5" value="c"> Precisamos comprar um lugar especial usando Robux.</label>
+                <label><input type="radio" name="q5" value="d"> Ela tem que ficar embaixo da terra onde ninguém pode ver.</label>
+            </div>
+
+            <button type="button" onclick="corrigir()">🌀 Ativar o Portal! 🚀</button>
+
+        </form>
+
+        <p id="resultado"></p>
+        <p id="linkRespostas"></p>
+
+    </div>
+
+    <script>
+        function corrigir() {
+            // Gabarito do Quiz
+            const respostasCorretas = {
+                q1: "b",
+                q2: "a",
+                q3: "b",
+                q4: "c",
+                q5: "b"
+            };
+
+            let pontos = 0;
+            const total = Object.keys(respostasCorretas).length;
+            const form = document.getElementById("quizForm");
+
+            let params = [];
+
+            for (const q in respostasCorretas) {
+                const box = document.getElementById(q + "box");
+
+                // Remove feedback anterior
+                const antigo = box.querySelector(".feedback");
+                if (antigo) antigo.remove();
+
+                const marcado = form.querySelector(`input[name="${q}"]:checked`);
+                const respostaAluno = marcado ? marcado.value : "nao_respondeu";
+                const acertou = respostaAluno === respostasCorretas[q];
+
+                if (acertou) {
+                    pontos++;
+                }
+
+                params.push(`${q}=${respostaAluno}`);
+                params.push(`${q}_status=${acertou ? "correto" : "errado"}`);
+
+                const feedback = document.createElement("p");
+                feedback.classList.add("feedback");
+
+                if (respostaAluno === "nao_respondeu") {
+                    feedback.innerHTML = "🤔 <b>Ficou perdido no espaço? Você esqueceu de marcar essa!</b>";
+                    feedback.classList.add("neutro");
+                } else if (acertou) {
+                    feedback.innerHTML = "🎉 <b>ZAP! Resposta certinha!</b>";
+                    feedback.classList.add("correto");
+                } else {
+                    let respostaCorretaTexto = "";
+                    const inputs = box.querySelectorAll("label input");
+
+                    inputs.forEach(input => {
+                        if (input.value === respostasCorretas[q]) {
+                            respostaCorretaTexto = input.parentNode.textContent.trim();
+                        }
+                    });
+
+                    feedback.innerHTML = `😢 <b>O portal falhou! A resposta certa era:</b><br> 👉 ${respostaCorretaTexto}`;
+                    feedback.classList.add("errado");
+                }
+
+                box.appendChild(feedback);
+            }
+
+            const areaResultado = document.getElementById("resultado");
+            areaResultado.style.display = "block";
+            
+            if (pontos === total) {
+                areaResultado.innerHTML = `🏆 VIAJANTE DO ESPAÇO! Você acertou todas (${pontos} de ${total})! Já pode criar portais para qualquer universo! 🚀🌌`;
+            } else if (pontos >= 3) {
+                areaResultado.innerHTML = `👏 Muito bem! Você acertou ${pontos} de ${total}. O teletransporte foi quase perfeito, continue treinando! 🌀`;
+            } else {
+                areaResultado.innerHTML = `😅 Você acertou ${pontos} de ${total}. Acho que nosso portal ainda precisa de uns ajustes no código, vamos revisar! 🔧`;
+            }
+
+            params.push(`pontos=${pontos}`);
+            params.push(`total=${total}`);
+
+            const urlBase = window.location.origin + window.location.pathname;
+            const link = urlBase + "?" + params.join("&");
+
+            document.getElementById("linkRespostas").innerHTML =
+                `<br>🔗 <b>Link Mágico do seu resultado:</b><br><a href="${link}" target="_blank">${link}</a>`;
+        }
+    </script>
+
+</body>
+
+</html>

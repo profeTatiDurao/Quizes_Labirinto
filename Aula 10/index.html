@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Divertido - Criador de Roblox!</title>
+
+    <!-- Fonte divertida do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            /* Fundo divertido com bolinhas */
+            background-color: #4db8ff;
+            background-image: 
+                radial-gradient(white 15%, transparent 16%),
+                radial-gradient(white 15%, transparent 16%);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 40px 30px;
+            max-width: 750px;
+            margin: auto;
+            border-radius: 30px;
+            border: 8px solid #ffde00;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #ff3366;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 0px #ffe6eb;
+        }
+
+        .subtitulo {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .pergunta {
+            text-align: left;
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 4px solid;
+            background-color: #f9f9f9;
+            border-radius: 20px;
+            transition: transform 0.2s;
+        }
+
+        .pergunta:hover {
+            transform: scale(1.02);
+        }
+
+        /* Cores alternadas para cada pergunta */
+        #q1box { border-color: #ff5e5e; background-color: #fff0f0; }
+        #q2box { border-color: #4caf50; background-color: #f0fff0; }
+        #q3box { border-color: #ff9800; background-color: #fff8e1; }
+        #q4box { border-color: #9c27b0; background-color: #f8f0ff; }
+
+        .pergunta p {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 10px;
+            transition: background 0.2s;
+        }
+
+        label:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        input[type="radio"] {
+            transform: scale(1.5);
+            margin-right: 10px;
+            accent-color: #ff3366;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #4caf50;
+            color: white;
+            font-size: 1.5rem;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 6px 0px #388e3c;
+            transition: 0.1s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: translateY(2px);
+            box-shadow: 0 4px 0px #388e3c;
+        }
+
+        button:active {
+            transform: translateY(6px);
+            box-shadow: 0 0px 0px #388e3c;
+        }
+
+        #resultado {
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            color: #ff3366;
+            background: #fff0f0;
+            padding: 15px;
+            border-radius: 15px;
+            display: none;
+        }
+
+        #linkRespostas {
+            margin-top: 20px;
+            word-break: break-all;
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 15px;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        #linkRespostas a {
+            color: #0078d7;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+        }
+
+        .correto {
+            background-color: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .errado {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        .neutro {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffeeba;
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                width: 95%;
+                padding: 20px 15px;
+                border-width: 5px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🎮 Quiz do Criador: Roblox Studio! 🧱</h1>
+
+        <p class="subtitulo">
+            Mostre que você é um mestre construtor de labirintos e castelos respondendo a essas 4 perguntinhas! ✨
+        </p>
+
+        <form id="quizForm">
+
+            <div class="pergunta" id="q1box">
+                <p>1) O que você NUNCA deve esquecer de fazer para as paredes do labirinto não caírem quando o jogo começar? 🧱</p>
+                <label>
+                    <input type="radio" name="q1" value="a"> Pintar todas as peças de azul escuro.
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="b"> Ancorar (Anchor) as peças.
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="c"> Colocar fogo mágico nelas.
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="d"> Apagar o chão do mapa.
+                </label>
+            </div>
+
+            <div class="pergunta" id="q2box">
+                <p>2) Como podemos juntar o castelo, as árvores e as paredes do labirinto para organizar tudo no Roblox Studio? 🌳🏰</p>
+                <label>
+                    <input type="radio" name="q2" value="a"> Agrupar (Group) ou criar um Modelo (Model).
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="b"> Jogar tudo no lixo e construir de novo.
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="c"> Mudar o nome do jogador.
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="d"> Deixar as peças espalhadas bem longe umas das outras.
+                </label>
+            </div>
+
+            <div class="pergunta" id="q3box">
+                <p>3) Para deixar o labirinto mais legal e assustador ou mais ensolarado, o que precisamos mudar? ☀️☁️</p>
+                <label>
+                    <input type="radio" name="q3" value="a"> A roupa do nosso personagem.
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="b"> O tamanho do mouse do computador.
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="c"> O clima, o céu e o horário do jogo.
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="d"> A velocidade que o boneco anda.
+                </label>
+            </div>
+
+            <div class="pergunta" id="q4box">
+                <p>4) Depois de construir as passarelas e o castelo, o que ajuda a não perder o trabalho e poder usá-lo em outros jogos? 💾</p>
+                <label>
+                    <input type="radio" name="q4" value="a"> Desligar o computador direto na tomada.
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="b"> Salvar como um Modelo (Model) para o Roblox.
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="c"> Tirar uma foto da tela com o celular.
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="d"> Esconder as peças embaixo do mapa.
+                </label>
+            </div>
+
+            <button type="button" onclick="corrigir()">⭐ Ver Resultados! ⭐</button>
+
+        </form>
+
+        <p id="resultado"></p>
+        <p id="linkRespostas"></p>
+
+    </div>
+
+    <script>
+        function corrigir() {
+            // Gabarito do Quiz
+            const respostasCorretas = {
+                q1: "b", // Ancorar (Anchor) as peças
+                q2: "a", // Agrupar (Group) ou criar um Modelo (Model)
+                q3: "c", // O clima, o céu e o horário do jogo
+                q4: "b"  // Salvar como um Modelo (Model) para o Roblox
+            };
+
+            let pontos = 0;
+            const total = Object.keys(respostasCorretas).length;
+            const form = document.getElementById("quizForm");
+            let params = [];
+
+            // Analisando cada pergunta
+            for (const q in respostasCorretas) {
+                const box = document.getElementById(q + "box");
+
+                // Remove feedback anterior, se houver
+                const antigo = box.querySelector(".feedback");
+                if (antigo) antigo.remove();
+
+                const marcado = form.querySelector(`input[name="${q}"]:checked`);
+                const respostaAluno = marcado ? marcado.value : "nao_respondeu";
+                const acertou = respostaAluno === respostasCorretas[q];
+
+                if (acertou) {
+                    pontos++;
+                }
+
+                // Salvando parâmetros para a URL
+                params.push(`${q}=${respostaAluno}`);
+                params.push(`${q}_status=${acertou ? "correto" : "errado"}`);
+
+                // Criando mensagem de feedback
+                const feedback = document.createElement("div");
+                feedback.classList.add("feedback");
+
+                if (respostaAluno === "nao_respondeu") {
+                    feedback.innerHTML = "⚠️ <b>Opa!</b> Você esqueceu de marcar essa. Tente chutar uma alternativa!";
+                    feedback.classList.add("neutro");
+                } else if (acertou) {
+                    feedback.innerHTML = "✅ <b>Uhuul, Correto!</b> Você mandou muito bem!";
+                    feedback.classList.add("correto");
+                } else {
+                    let respostaCorretaTexto = "";
+                    const inputs = box.querySelectorAll("label input");
+
+                    // Pega o texto da alternativa correta
+                    inputs.forEach(input => {
+                        if (input.value === respostasCorretas[q]) {
+                            respostaCorretaTexto = input.parentNode.textContent.trim();
+                        }
+                    });
+
+                    feedback.innerHTML = `❌ <b>Poxa, quase!</b> A resposta certa é:<br><i>${respostaCorretaTexto}</i>`;
+                    feedback.classList.add("errado");
+                }
+
+                box.appendChild(feedback);
+            }
+
+            // Mostrando o Resultado Final
+            const resultadoEl = document.getElementById("resultado");
+            resultadoEl.style.display = "block";
+            
+            if (pontos === total) {
+                resultadoEl.innerHTML = `🎉 Perfeito! Você acertou ${pontos} de ${total}! Você é um Mestre do Roblox! 🎉`;
+            } else if (pontos >= 2) {
+                resultadoEl.innerHTML = `👍 Muito bom! Você acertou ${pontos} de ${total}! Continue treinando!`;
+            } else {
+                resultadoEl.innerHTML = `💪 Não desista! Você acertou ${pontos} de ${total}. Revise as respostas e tente de novo!`;
+            }
+
+            // Gerando Link
+            params.push(`pontos=${pontos}`);
+            params.push(`total=${total}`);
+
+            const urlBase = window.location.origin + window.location.pathname;
+            const link = urlBase + "?" + params.join("&");
+
+            const linkRespostasEl = document.getElementById("linkRespostas");
+            linkRespostasEl.style.display = "block";
+            linkRespostasEl.innerHTML = `🔗 <b>Compartilhe seu resultado com o professor:</b><br><br><a href="${link}" target="_blank">${link}</a>`;
+            
+            // Rola suavemente até o final da página
+            linkRespostasEl.scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
+
+</body>
+
+</html>

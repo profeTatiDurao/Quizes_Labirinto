@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Roblox - Jogando com Segurança! 🛡️</title>
+
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Fredoka One', cursive, sans-serif;
+            background-color: #E0FFFF; /* Ciano clarinho */
+            background-image: radial-gradient(#AFEEEE 15%, transparent 15%), radial-gradient(#AFEEEE 15%, transparent 15%);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            color: #2F4F4F; /* Cinza escuro esverdeado */
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            width: 750px;
+            margin: auto;
+            border-radius: 25px; 
+            box-shadow: 0 10px 25px rgba(32, 178, 170, 0.3);
+            border: 6px solid #20B2AA; /* Verde Marinho Claro */
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #008B8B; /* Ciano escuro */
+            text-shadow: 2px 2px 0px #98FB98; /* Sombra verde menta */
+            font-size: 2.5rem;
+        }
+
+        .subtitulo {
+            font-size: 1.1rem;
+            color: #556B2F; /* Verde oliva escuro */
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .pergunta {
+            text-align: left;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 8px solid #3CB371; /* Verde médio */
+            background-color: #F0FFF0; /* Melão (Verde super claro) */
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .pergunta p {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #008080; /* Teal (Azul-esverdeado) */
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            padding: 6px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        label:hover {
+            background-color: #E0F8F5; /* Ciano super claro ao passar o mouse */
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #20B2AA; /* Verde Marinho */
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.3rem;
+            font-family: inherit;
+            border: none;
+            border-radius: 50px; 
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 6px 0px #008080; /* Efeito 3D Escuro */
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #008B8B;
+            transform: translateY(3px);
+            box-shadow: 0 3px 0px #008080; 
+        }
+
+        #resultado {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-top: 25px;
+            color: #006400;
+            background: #E8F8F5;
+            padding: 15px;
+            border-radius: 15px;
+            display: none;
+            border: 3px dashed #20B2AA;
+        }
+
+        #linkRespostas {
+            margin-top: 15px;
+            word-break: break-all;
+            font-size: 0.9rem;
+        }
+
+        #linkRespostas a {
+            color: #008B8B;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .correto {
+            color: #32CD32;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .errado {
+            color: #FF6347; /* Tomato */
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .neutro {
+            color: #FFA500;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🛡️ Quiz: Heróis da Segurança! 👨‍👩‍👧‍👦</h1>
+
+        <p class="subtitulo">
+            Vamos pensar juntos! Por que é tão importante configurar a idade certa e ter a ajuda dos pais para jogar Roblox? ✨
+        </p>
+
+        <form id="quizForm">
+
+            <div class="pergunta" id="q1box">
+                <p>1) 🆔 O Roblox às vezes pede um documento de verdade para confirmar quantos anos você tem. Por que ele faz isso?</p>
+                <label><input type="radio" name="q1" value="a"> Para você ganhar Robux grátis na sua conta.</label>
+                <label><input type="radio" name="q1" value="b"> Para deixar o seu bonequinho mais alto do que os outros jogadores.</label>
+                <label><input type="radio" name="q1" value="c"> Para o sistema ter certeza da sua idade real e liberar apenas os jogos e conversas que são super seguros para você!</label>
+                <label><input type="radio" name="q1" value="d"> Para ninguém descobrir qual é o seu nome verdadeiro no jogo.</label>
+            </div>
+
+            <div class="pergunta" id="q2box">
+                <p>2) 👪 Por que é super importante que seus pais ou responsáveis autorizem e ajudem a configurar o seu Roblox?</p>
+                <label><input type="radio" name="q2" value="a"> Porque eles colocam limites de tempo, ajudam a bloquear estranhos e ativam um "escudo protetor" na sua conta!</label>
+                <label><input type="radio" name="q2" value="b"> Para eles poderem jogar no seu lugar quando você for dormir.</label>
+                <label><input type="radio" name="q2" value="c"> Para o jogo carregar mais rápido no seu celular ou computador.</label>
+                <label><input type="radio" name="q2" value="d"> Porque o Roblox é um jogo apenas para adultos.</label>
+            </div>
+
+            <div class="pergunta" id="q3box">
+                <p>3) 🎮 No Roblox, os jogos têm "Níveis de Maturidade" (Livre, 9+, 13+ e 17+). Por que os jogos são separados por idade?</p>
+                <label><input type="radio" name="q3" value="a"> Para separar os jogadores que são "noobs" (iniciantes) dos que são profissionais.</label>
+                <label><input type="radio" name="q3" value="b"> Para deixar os jogos mais caros de comprar.</label>
+                <label><input type="radio" name="q3" value="c"> Porque os jogos para pessoas mais velhas sempre dão mais prêmios e medalhas.</label>
+                <label><input type="radio" name="q3" value="d"> Porque alguns jogos podem ter sustos muito grandes, violência ou assuntos que não são legais nem seguros para crianças menores.</label>
+            </div>
+
+            <div class="pergunta" id="q4box">
+                <p>4) 💬 Na hora de fazer amizades e usar o chat do jogo, como a configuração de idade correta protege você?</p>
+                <label><input type="radio" name="q4" value="a"> Ela permite que você conte seu endereço de casa e escola para todo mundo sem problemas.</label>
+                <label><input type="radio" name="q4" value="b"> Ela ativa um filtro poderoso que esconde palavras feias e impede que estranhos mal-intencionados mandem mensagens para você.</label>
+                <label><input type="radio" name="q4" value="c"> Ela faz você ganhar mil amigos automaticamente, sem precisar adicionar ninguém.</label>
+                <label><input type="radio" name="q4" value="d"> Ela deixa as letras do chat gigantes e coloridas.</label>
+            </div>
+
+            <button type="button" onclick="corrigir()">🛡️ Ativar meu Escudo Protetor! 🛡️</button>
+
+        </form>
+
+        <p id="resultado"></p>
+        <p id="linkRespostas"></p>
+
+    </div>
+
+    <script>
+        function corrigir() {
+            // Gabarito do Quiz
+            const respostasCorretas = {
+                q1: "c",
+                q2: "a",
+                q3: "d",
+                q4: "b"
+            };
+
+            let pontos = 0;
+            const total = Object.keys(respostasCorretas).length;
+            const form = document.getElementById("quizForm");
+
+            let params = [];
+
+            for (const q in respostasCorretas) {
+                const box = document.getElementById(q + "box");
+
+                // Remove feedback anterior
+                const antigo = box.querySelector(".feedback");
+                if (antigo) antigo.remove();
+
+                const marcado = form.querySelector(`input[name="${q}"]:checked`);
+                const respostaAluno = marcado ? marcado.value : "nao_respondeu";
+                const acertou = respostaAluno === respostasCorretas[q];
+
+                if (acertou) {
+                    pontos++;
+                }
+
+                params.push(`${q}=${respostaAluno}`);
+                params.push(`${q}_status=${acertou ? "correto" : "errado"}`);
+
+                const feedback = document.createElement("p");
+                feedback.classList.add("feedback");
+
+                if (respostaAluno === "nao_respondeu") {
+                    feedback.innerHTML = "🤔 <b>Opa! Um bom herói pensa em todas as perguntas. Faltou essa!</b>";
+                    feedback.classList.add("neutro");
+                } else if (acertou) {
+                    feedback.innerHTML = "🎉 <b>Certinho! Você sabe se proteger muito bem!</b>";
+                    feedback.classList.add("correto");
+                } else {
+                    let respostaCorretaTexto = "";
+                    const inputs = box.querySelectorAll("label input");
+
+                    inputs.forEach(input => {
+                        if (input.value === respostasCorretas[q]) {
+                            respostaCorretaTexto = input.parentNode.textContent.trim();
+                        }
+                    });
+
+                    feedback.innerHTML = `😢 <b>Quase lá, mas cuidado! A resposta mais segura era:</b><br> 👉 ${respostaCorretaTexto}`;
+                    feedback.classList.add("errado");
+                }
+
+                box.appendChild(feedback);
+            }
+
+            const areaResultado = document.getElementById("resultado");
+            areaResultado.style.display = "block";
+            
+            if (pontos === total) {
+                areaResultado.innerHTML = `🏆 PARABÉNS, SUPER HERÓI! Você acertou todas (${pontos} de ${total})! Sabe tudo sobre como jogar Roblox com segurança e alegria! 🛡️💙`;
+            } else if (pontos >= 2) {
+                areaResultado.innerHTML = `👏 Muito bem! Você acertou ${pontos} de ${total}. Continue conversando com seus pais para jogar sempre seguro! 👪`;
+            } else {
+                areaResultado.innerHTML = `😅 Você acertou ${pontos} de ${total}. Que tal pedir para um adulto ler as perguntas com você? Jogar seguro é jogar feliz! ✨`;
+            }
+
+            params.push(`pontos=${pontos}`);
+            params.push(`total=${total}`);
+
+            const urlBase = window.location.origin + window.location.pathname;
+            const link = urlBase + "?" + params.join("&");
+
+            document.getElementById("linkRespostas").innerHTML =
+                `<br>🔗 <b>Link do seu Escudo (Placar) para mostrar pros pais:</b><br><a href="${link}" target="_blank">${link}</a>`;
+        }
+    </script>
+
+</body>
+
+</html>

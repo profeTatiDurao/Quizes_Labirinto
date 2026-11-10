@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Roblox - Escadas Mágicas! 🪜</title>
+
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Fredoka One', cursive, sans-serif;
+            background-color: #E0F7FA; /* Azul ciano bem clarinho (Céu) */
+            background-image: radial-gradient(#B2EBF2 15%, transparent 15%), radial-gradient(#B2EBF2 15%, transparent 15%);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            color: #333333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            width: 750px;
+            margin: auto;
+            border-radius: 25px; 
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+            border: 6px solid #FF69B4; /* Rosa Choque (Hot Pink) */
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #FF1493; /* Rosa Profundo (Deep Pink) */
+            text-shadow: 2px 2px 0px #FFD700; /* Sombra amarelinha */
+            font-size: 2.6rem;
+        }
+
+        .subtitulo {
+            font-size: 1.1rem;
+            color: #4682B4; /* Azul Metálico */
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .pergunta {
+            text-align: left;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 8px solid #00BFFF; /* Azul Céu Profundo */
+            background-color: #F0F8FF; /* Azul Alice (quase branco) */
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .pergunta p {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #1E90FF; /* Azul Dodger */
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            padding: 6px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        label:hover {
+            background-color: #FFF0F5; /* Lavanda avermelhada (Rosa clarinho) */
+        }
+
+        code {
+            color: #FF00FF; /* Magenta para destacar o código */
+            background-color: #F8F8FF;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #FF69B4; /* Rosa Choque */
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.3rem;
+            font-family: inherit;
+            border: none;
+            border-radius: 50px; 
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 6px 0px #C71585; /* Efeito 3D rosa escuro */
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #FF1493;
+            transform: translateY(3px);
+            box-shadow: 0 3px 0px #C71585; 
+        }
+
+        #resultado {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-top: 25px;
+            color: #FF1493;
+            background: #FFFACD;
+            padding: 15px;
+            border-radius: 15px;
+            display: none;
+            border: 3px dashed #00BFFF;
+        }
+
+        #linkRespostas {
+            margin-top: 15px;
+            word-break: break-all;
+            font-size: 0.9rem;
+        }
+
+        #linkRespostas a {
+            color: #1E90FF;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .correto {
+            color: #32CD32;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .errado {
+            color: #FF4500;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .neutro {
+            color: #FFA500;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🪜 Quiz das Escadas Mágicas! ✨</h1>
+
+        <p class="subtitulo">
+            Mostre que você sabe criar degraus com matemática, laços de repetição e plaquinhas flutuantes! ☁️
+        </p>
+
+        <form id="quizForm">
+
+            <div class="pergunta" id="q1box">
+                <p>1) 🪧 Nós criamos um <code>BillboardGui</code> para avisar o jogador. O que essa ferramenta faz no Roblox?</p>
+                <label><input type="radio" name="q1" value="a"> Faz o jogo tocar uma música de suspense.</label>
+                <label><input type="radio" name="q1" value="b"> Constrói um chão de lava falso.</label>
+                <label><input type="radio" name="q1" value="c"> Cria uma plaquinha flutuante com um texto (como "Pegue 12 Moedas") que fica aparecendo em cima de uma peça!</label>
+                <label><input type="radio" name="q1" value="d"> É uma varinha mágica que destrói o castelo.</label>
+            </div>
+
+            <div class="pergunta" id="q2box">
+                <p>2) 🔍 No nosso script, o que significa a parte <code>if player.leaderstats.Pontos.Value == 3 then</code>?</p>
+                <label><input type="radio" name="q2" value="a"> O jogo confere no placar se o jogador juntou a quantidade certa de moedas para deixar a escada aparecer.</label>
+                <label><input type="radio" name="q2" value="b"> O jogo tira 3 pontos do jogador como punição.</label>
+                <label><input type="radio" name="q2" value="c"> O jogador ganha 3 vidas extras instantaneamente.</label>
+                <label><input type="radio" name="q2" value="d"> A porta do castelo fecha para sempre.</label>
+            </div>
+
+            <div class="pergunta" id="q3box">
+                <p>3) 🔁 Para fazer os degraus, usamos o comando <code>for i = 0, 11 do</code>. Por que usamos esse comando em vez de criar degrau por degrau na mão?</p>
+                <label><input type="radio" name="q3" value="a"> Porque "for" significa "força" e deixa os degraus indestrutíveis.</label>
+                <label><input type="radio" name="q3" value="b"> Porque isso é um "laço de repetição"! Ele cria os degraus várias vezes automaticamente, poupando muito tempo de programação!</label>
+                <label><input type="radio" name="q3" value="c"> Para deixar o código mais difícil e ninguém conseguir ler.</label>
+                <label><input type="radio" name="q3" value="d"> Porque ele apaga o mapa inteiro 11 vezes.</label>
+            </div>
+
+            <div class="pergunta" id="q4box">
+                <p>4) ⚓ Quando o código diz <code>degrau.Anchored = true</code>, o que acontece com a escada que foi construída no ar?</p>
+                <label><input type="radio" name="q4" value="a"> Ela afunda na água como uma âncora de navio.</label>
+                <label><input type="radio" name="q4" value="b"> Ela fica presa (ancorada) flutuando no ar, para não cair no chão e quebrar quando o jogador pisar nela!</label>
+                <label><input type="radio" name="q4" value="c"> Ela começa a voar pelo céu sem parar.</label>
+                <label><input type="radio" name="q4" value="d"> A escada fica invisível.</label>
+            </div>
+
+            <div class="pergunta" id="q5box">
+                <p>5) 📐 Para criar os degraus na posição certa, usamos continhas de matemática como <code>altura = (i * 1.5) + 0.75</code>. Por que precisamos calcular a altura?</p>
+                <label><input type="radio" name="q5" value="a"> Só porque matemática é legal, mas não faz diferença no jogo.</label>
+                <label><input type="radio" name="q5" value="b"> Para o jogador ter que fazer conta de cabeça antes de pular.</label>
+                <label><input type="radio" name="q5" value="c"> Para que todos os degraus fiquem embolados exatamente no mesmo lugar.</label>
+                <label><input type="radio" name="q5" value="d"> Para que cada novo degrau fique um pouquinho mais alto que o outro, formando a subida perfeita da escada!</label>
+            </div>
+
+            <button type="button" onclick="corrigir()">☁️ Subir a Escada dos Pontos! ☁️</button>
+
+        </form>
+
+        <p id="resultado"></p>
+        <p id="linkRespostas"></p>
+
+    </div>
+
+    <script>
+        function corrigir() {
+            // Gabarito do Quiz
+            const respostasCorretas = {
+                q1: "c",
+                q2: "a",
+                q3: "b",
+                q4: "b",
+                q5: "d"
+            };
+
+            let pontos = 0;
+            const total = Object.keys(respostasCorretas).length;
+            const form = document.getElementById("quizForm");
+
+            let params = [];
+
+            for (const q in respostasCorretas) {
+                const box = document.getElementById(q + "box");
+
+                // Remove feedback anterior
+                const antigo = box.querySelector(".feedback");
+                if (antigo) antigo.remove();
+
+                const marcado = form.querySelector(`input[name="${q}"]:checked`);
+                const respostaAluno = marcado ? marcado.value : "nao_respondeu";
+                const acertou = respostaAluno === respostasCorretas[q];
+
+                if (acertou) {
+                    pontos++;
+                }
+
+                params.push(`${q}=${respostaAluno}`);
+                params.push(`${q}_status=${acertou ? "correto" : "errado"}`);
+
+                const feedback = document.createElement("p");
+                feedback.classList.add("feedback");
+
+                if (respostaAluno === "nao_respondeu") {
+                    feedback.innerHTML = "🤔 <b>Cuidado com o degrau fantasma! Você esqueceu de responder essa.</b>";
+                    feedback.classList.add("neutro");
+                } else if (acertou) {
+                    feedback.innerHTML = "🎉 <b>Certinho! Você pulou pro degrau certo!</b>";
+                    feedback.classList.add("correto");
+                } else {
+                    let respostaCorretaTexto = "";
+                    const inputs = box.querySelectorAll("label input");
+
+                    inputs.forEach(input => {
+                        if (input.value === respostasCorretas[q]) {
+                            respostaCorretaTexto = input.parentNode.textContent.trim();
+                        }
+                    });
+
+                    feedback.innerHTML = `😢 <b>Ops, você escorregou! A resposta certa era:</b><br> 👉 ${respostaCorretaTexto}`;
+                    feedback.classList.add("errado");
+                }
+
+                box.appendChild(feedback);
+            }
+
+            const areaResultado = document.getElementById("resultado");
+            areaResultado.style.display = "block";
+            
+            if (pontos === total) {
+                areaResultado.innerHTML = `🏆 MESTRE CONSTRUTOR! Você acertou todas (${pontos} de ${total})! Sua escada mágica está perfeita! ✨☁️`;
+            } else if (pontos >= 3) {
+                areaResultado.innerHTML = `👏 Muito bem! Você acertou ${pontos} de ${total}. Já consegue construir várias coisas legais! 🧱`;
+            } else {
+                areaResultado.innerHTML = `😅 Você acertou ${pontos} de ${total}. Vamos olhar o script com a lupa mágica de novo! 🔍`;
+            }
+
+            params.push(`pontos=${pontos}`);
+            params.push(`total=${total}`);
+
+            const urlBase = window.location.origin + window.location.pathname;
+            const link = urlBase + "?" + params.join("&");
+
+            document.getElementById("linkRespostas").innerHTML =
+                `<br>🔗 <b>Link do seu Placar para mostrar pros amigos:</b><br><a href="${link}" target="_blank">${link}</a>`;
+        }
+    </script>
+
+</body>
+
+</html>
